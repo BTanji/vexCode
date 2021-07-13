@@ -2,47 +2,49 @@
 #define DRIVE_H_
 
 #include "stdbool.h"
-//#include "subsystems/utilities.h"
+#include "subsystems/utilities.h"
 #include "API.h"
 
-Encoder rgtEnc;
-Encoder lftEnc;
-Encoder bckEnc;
+extern Encoder rgtEnc;
+extern Encoder lftEnc;
+extern Encoder bckEnc;
 
-float bckToMid = 9.0;
-float sideToMid = 7.5;
+extern _pos sPos;
 
-float angToEnc = 0.8064;
+extern float bckToMid;
+extern float sideToMid;
+
+extern float angToEnc;
 
 // circumfrence of wheel / encoder ticks per rotation
-float EncToInches = (4.1 * 3.1415926535) / 900.0;
-float QEncToInches = (4.1 * 3.1415926535) / 360.0;
+extern float EncToInches;
+extern float QEncToInches;
 
 // change in ang
-float DeltaAngle = 0;
+extern float DeltaAngle;
 
 // for robot position tracking
-float L = 0;
-float R = 0;
-float B = 0;
+extern float L;
+extern float R;
+extern float B;
 
-float lstLft = 0;
-float lstRgt = 0;
-float lstBck = 0;
+extern float lstLft;
+extern float lstRgt;
+extern float lstBck;
 
-float halfAng = 0;
-float hRL = 0;
-float hB = 0;
+extern float halfAng;
+extern float hRL;
+extern float hB;
 
 // desired drive positions for auto
-float desiredPos;
-float desiredAng;
+extern float desiredPos;
+extern float desiredAng;
 
-float followDist;
-float followAng;
+extern float followDist;
+extern float followAng;
 
 // desired drive power
-int DesPower;
+extern int DesPower;
 
 //get back encoder values
 int getBckPosition();
@@ -75,7 +77,7 @@ void moveDrive(int lft, int rgt);
 void stopDrive();
 
 //find position of robot in space using encoders
-void trackPos(int lft, int rgt, int bck);
+void trackPos();
 
 //drive control task
 void driveTask();

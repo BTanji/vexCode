@@ -38,4 +38,5 @@ void initialize() {
   lftEnc = encoderInit(3, 4, true);
   bckEnc = encoderInit(5, 6, false);
 
+  TaskHandle driveT = taskCreate(driveTask, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
 }
