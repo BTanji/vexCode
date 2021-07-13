@@ -1,5 +1,45 @@
 #include "subsystems/drive.h"
 
+Encoder rgtEnc;
+Encoder lftEnc;
+Encoder bckEnc;
+
+_pos sPos;
+
+float bckToMid = 9.0;
+float sideToMid = 7.5;
+
+float angToEnc = 0.8064;
+
+// circumfrence of wheel / encoder ticks per rotation
+float EncToInches = (4.1 * 3.1415926535) / 900.0;
+float QEncToInches = (4.1 * 3.1415926535) / 360.0;
+
+// change in ang
+float DeltaAngle;
+
+// for robot position tracking
+float L;
+float R;
+float B;
+
+float lstLft;
+float lstRgt;
+float lstBck;
+
+float halfAng;
+float hRL;
+float hB;
+
+// desired drive positions for auto
+float desiredPos;
+float desiredAng;
+
+float followDist;
+float followAng;
+
+// desired drive power
+int DesPower;
 
 //get back encoder values
 int getBckPos()
@@ -40,7 +80,7 @@ float getRightPosInches()
 //reset robot position
 void resetRobotPos()
 {
-  /*
+
   // reset angle
   sPos.Ang = 0;
 
@@ -51,7 +91,7 @@ void resetRobotPos()
 
   // reset current pos
   sPos.x = 0;
-  sPos.y = 0;*/
+  sPos.y = 0;
 }
 
 //reset all compoenets of drive (motor, sensors, values)
@@ -89,4 +129,16 @@ void stopDrive()
 {
   motorStop(2);
   motorStop(3);
+}
+
+//find position of robot in space using encoders
+void trackPos()
+{
+}
+
+//drive control task
+void driveTask()
+{
+  trackPos();
+
 }

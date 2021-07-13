@@ -36,5 +36,7 @@ void operatorControl() {
 
 		motorSet(2, lft_power);
 		motorSet(3, rgt_power);
+
+		//printf("enc: %d", getBckPosition());
 	}
 }
